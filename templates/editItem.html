@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block cabecera %}
+	<header>
+		<div class="contenedor1">
+			<div class="titulo">
+				
+				<h1> Web Application</h1>
+                <h3> {{ username }} </h3>
+				<a href="./?action=Logout"><h3> Logout </h3></a>
+			
+
+				
+			</div>
+		</div>
+	</header>
+	
+{% endblock %}	
+
+{% block content %}
+	<div class="contenedor2">
+
+		<a href="./?action=Listar"><h4> Volver a mi lista</h4></a>
+			
+		
+
+		<h3>Mi Nueva Tarea</h3>
+		<div class="container">
+
+
+		     <form class="form-horizontal" method="POST" action="./?action=UpdateItem&amp;itemId={{item.getId}}">	
+
+                <input type="hidden" id="user_id" name="user_id" value="{{item.getUser_Id}}" />
+                
+                <div class="form-group">
+			        <label for=title class="col-md-4 control-label"> Title </label>
+			        <div class="col-md-3">
+				            <input id="title" class="form-control" type="text" name="title" placeholder="title" value="{{item.getTitle}}" required="required" >
+					</div>
+				</div>	
+
+				<div class="form-group">		
+					<label for=due_date class="col-md-4 control-label"> Due Date </label>
+                    <div class="col-md-3">
+					       <input id="due_date" class="form-control" type="date" name="due_date" value="{{item.getDue_Date}}" required="required" >
+					</div>
+				</div>
+
+				<div class="form-group">		
+					<label for=description class="col-md-4 control-label"> Description </label>
+				    <div class="col-md-3">
+					         <textarea  id="description" class="form-control" name="description" rows="4" value="{{item.getDescription}}" required="required" ></textarea>
+					</div>
+				</div>
+						
+				<div class="form-group">		
+					<label for=done class="col-md-4 control-label"> Done </label>
+	                <div class="col-md-3">
+					      <input id="done" class="chekbox" type="checkbox"  name="done" value="{{item.getDone}}" >
+				    </div>
+				</div>
+
+				<h4 class="text-center bg-success"> {{ message }} </h4>
+				   		
+				<div class="form-group">	
+				    <div class="col-lg-offset-5 col-md-7">	
+				         <input type="submit" class="btn btn-primary" value="Edit Item">
+				         
+			        </div>		
+		        </div>	
+		</form>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block cabecera %}
+	<header>
+		<div class="contenedor1">
+			<div class="titulo">
+				
+				<h1> Web Application</h1>
+                <h3> {{ username }} </h3>
+				<a href="./?action=Logout"><h3> Logout </h3></a>
+			
+
+				
+			</div>
+		</div>
+	</header>
+	
+{% endblock %}	
+
+{% block content %}
+	<div class="contenedor2">
+		<h4 class="text-center bg-success"> {{ message }} </h4>
+		<h3>Mi lista de Tareas</h3>
+		
+        <div class="container">
+           <div class="caja">
+
+              
+
+		      <form class="form-horizontal" method="POST" action="./?action=NewItem">	
+
+			   {% for it in items %}
+   
+                 {% if it.getDone == 1 %}
+                 <div class="form-group">
+                    <div class="col-md-15 col-xs-10">
+                       <div class="checkbox">
+                           <input type="checkbox"  name={{ it.getTitle }}  checked > {{ it.getTitle }}
+
+                            <a href="./?action=DeleteItem&amp;itemId={{it.getId}}"> <span   class = "glyphicon glyphicon-trash " > </span></a>
+                            
+                            <a href="./?action=EditItem&amp;itemId={{it.getId}}"> <span   class = "glyphicon glyphicon-pencil "> </span></a>
+
+                       </div>    
+                    </div>
+                  </div>  
+                 {% endif %}    
+				 {% if it.done == 0 %}
+				 <div class="form-group">
+                	<div class="col-md-15 col-xs-10">
+                      <div class="checkbox">
+			               <input type="checkbox"  name={{ it.getTitle }}  > {{ it.getTitle }}
+
+			               <a href="./?action=DeleteItem&amp;itemId={{it.getId}}"> <span   class = "glyphicon glyphicon-trash " > </span></a>
+
+			               <a href="./?action=EditItem&amp;itemId={{it.getId}}"> <span   class = "glyphicon glyphicon-pencil "> </span></a>
+                           
+			            </div>     
+	                </div >
+	             </div>   
+				{% endif %}	
+							
+			 {% endfor %}
+             <div class="form-group">
+				              <div class="col-md-10 col-md-offset-1">
+			                          <input type="submit" class="btn btn-primary" value="New Item">
+					          </div>
+		     </div>			         
+			
+		</form>
+		</div>
+	</div>
+
+</div>	
+{% endblock %}

@@ -44,10 +44,11 @@ class ToDoListController {
             $title = htmlentities($_POST['title']);
             $due_date = htmlentities($_POST['due_date']);
             $description = htmlentities($_POST['description']);
-            if ($_POST['done']!=""){
+            if (isset($_POST['done'])){
 
-                  $done = htmlentities($_POST['done']);   
-            }
+                  $done = 1;
+
+             }     
             else{
 
                 $done = 0;

@@ -5,7 +5,7 @@ error_reporting(-1);
 
 /** CONTROLADORES **/
 
-
+require_once './controllers/indexController.php';
 require_once './controllers/loginController.php';
 require_once './controllers/todolistController.php';
 
@@ -26,6 +26,7 @@ require_once './model/db/todolistDB.php';
 /** VISTAS **/
 
 include_once './views/twig.php';
+require_once './views/indexView.php';
 require_once './views/loginView.php';
 require_once './views/myToDoListView.php';
 require_once './views/LoadItemView.php';
